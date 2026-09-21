@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#07110c">
+  <meta name="description" content="CrabOS — a deeply unnecessary operating system from NerdCrab Labs.">
+  <title>CrabOS v0.2</title>
+  <link rel="stylesheet" href="crabos.css">
+</head>
+<body>
+  <div class="boot" id="boot" aria-live="polite">
+    <div class="boot__logo" aria-hidden="true"><div class="pixel-crab">&lt;🦀&gt;</div></div>
+    <h1>crabOS</h1><p>experimental shell environment</p>
+    <div class="boot__bar"><i></i></div><div class="boot__status" id="boot-status">calibrating pincers...</div>
+  </div>
+
+  <main class="desktop" id="desktop">
+    <div class="wallpaper-art" aria-hidden="true"><span>CRAB</span><b>OS</b><small>v0.1.26</small></div>
+    <div class="desktop__status"><span class="online-dot"></span> NERDCRAB NETWORK // ONLINE</div>
+
+    <section class="icons" aria-label="Desktop applications">
+      <button class="desktop-icon" data-open="about"><span class="icon icon--computer">▣</span><b>Welcome</b></button>
+      <button class="desktop-icon" data-open="files"><span class="icon icon--folder">▰</span><b>Files</b></button>
+      <button class="desktop-icon" data-open="terminal"><span class="icon icon--terminal">›_</span><b>Terminal</b></button>
+      <button class="desktop-icon" data-open="browser"><span class="icon icon--browser">◎</span><b>Web</b></button>
+      <button class="desktop-icon" data-open="notes"><span class="icon icon--notes">≡</span><b>Notes</b></button>
+      <button class="desktop-icon" data-open="pincer"><span class="icon icon--game">✦</span><b>Pincer.exe</b></button>
+      <button class="desktop-icon" data-open="trash"><span class="icon icon--trash">⌫</span><b>Trash</b></button>
+    </section>
+
+    <section class="window active" id="window-about" data-app="about" style="--x:22vw;--y:12vh;--w:600px">
+      <header class="window__bar"><span><i class="app-dot"></i> SYSTEM_WELCOME.txt</span><div><button data-minimize aria-label="Minimize">─</button><button data-close aria-label="Close">×</button></div></header>
+      <div class="window__body welcome">
+        <div class="welcome__mark"><span>🦀</span></div>
+        <div><p class="label">NERDCRAB LABS PRESENTS</p><h2>WELCOME TO<br><em>crabOS</em></h2><p>The operating system for doing everything except actual work.</p><div class="system-grid"><span>VERSION<b>0.1.26 ALPHA</b></span><span>KERNEL<b>PINCH/64</b></span><span>UPTIME<b id="uptime">00:00:00</b></span><span>STABILITY<b>OPTIMISTIC</b></span></div><button class="ui-button" data-open="files">EXPLORE FILES →</button></div>
+      </div>
+    </section>
+
+    <section class="window hidden" id="window-files" data-app="files" style="--x:13vw;--y:9vh;--w:650px">
+      <header class="window__bar"><span><i class="app-dot"></i> FILE EXPLORER</span><div><button data-minimize>─</button><button data-close>×</button></div></header>
+      <div class="window__body file-app">
+        <aside><button class="selected">▰ HOME</button><button>◇ LAB</button><button>⌁ SIGNALS</button><button>⌫ TRASH</button><small>STORAGE<br><i><b></b></i> 4.2 KB / 64 KB</small></aside>
+        <div class="file-panel"><div class="path">CRAB:/HOME/GUEST/</div><div class="file-list">
+          <button data-file="readme"><span>▤</span><b>README.txt</b><small>1.2 KB</small></button>
+          <button data-file="classified"><span>▥</span><b>classified.dat</b><small>???</small></button>
+          <button data-file="todo"><span>☑</span><b>todo.txt</b><small>0.6 KB</small></button>
+          <button data-file="crab"><span>🦀</span><b>definitely_not_a_crab.gif</b><small>8 B</small></button>
+        </div><article class="file-preview" id="file-preview"><p>Select a file to preview its highly important contents.</p></article></div>
+      </div>
+    </section>
+
+    <section class="window hidden browser-window" id="window-browser" data-app="browser" style="--x:10vw;--y:6vh;--w:850px">
+      <header class="window__bar"><span><i class="app-dot"></i> CRABSCAPE WEB NAVIGATOR</span><div><button data-minimize>─</button><button data-close>×</button></div></header>
+      <div class="window__body browser-app"><div class="browser-toolbar"><button id="browser-back">←</button><button id="browser-forward">→</button><button id="browser-reload">↻</button><form id="browser-form"><span>⌁</span><input id="browser-address" aria-label="Web address or search" placeholder="Search or enter an address"><button>GO</button></form><button id="browser-home">⌂</button></div><div class="browser-status" id="browser-status"><span class="online-dot"></span> SCRAMJET V2 // READY</div><div class="browser-home" id="browser-homepage"><div class="browser-logo">CRAB<span>SCAPE</span></div><p>THE WEB, THROUGH A SLIGHTLY SALTY LENS</p><form id="browser-search"><input aria-label="Search" placeholder="Where do you want to go?"><button>SEARCH</button></form><div class="browser-bookmarks"><button data-url="https://wikipedia.org">WIKIPEDIA</button><button data-url="https://archive.org">ARCHIVE</button><button data-url="https://example.com">TEST PAGE</button></div><small>Powered by Scramjet v2 · Traffic passes through this CrabOS server</small></div><iframe id="browser-frame" title="CrabScape web content"></iframe></div>
+    </section>
+
+    <section class="window hidden" id="window-terminal" data-app="terminal" style="--x:28vw;--y:18vh;--w:620px">
+      <header class="window__bar"><span><i class="app-dot"></i> TERMINAL — guest@crabos</span><div><button data-minimize>─</button><button data-close>×</button></div></header>
+      <div class="window__body terminal-app"><div class="terminal-output" id="terminal-output"><p>crabOS shell v0.1.26 [pinch/64]</p><p>Type <b>help</b> to inspect available commands.</p><br></div><form id="terminal-form"><label for="command">guest@crabos:~$</label><input id="command" autocomplete="off" spellcheck="false"><button>RUN</button></form></div>
+    </section>
+
+    <section class="window hidden" id="window-notes" data-app="notes" style="--x:35vw;--y:10vh;--w:430px">
+      <header class="window__bar window__bar--violet"><span><i class="app-dot"></i> NOTES.exe</span><div><button data-minimize>─</button><button data-close>×</button></div></header>
+      <div class="window__body notes-app"><div class="notes-toolbar">AUTOSAVE: <b>ON</b><span id="save-status">SAVED</span></div><textarea id="notes" aria-label="Notes">ideas for the lab:
+
+- teach crab to code
+- investigate mysterious signal
+- add more buttons
+- do NOT open classified.dat</textarea></div>
+    </section>
+
+    <section class="window hidden" id="window-pincer" data-app="pincer" style="--x:20vw;--y:8vh;--w:500px">
+      <header class="window__bar window__bar--orange"><span><i class="app-dot"></i> PINCER.exe</span><div><button data-minimize>─</button><button data-close>×</button></div></header>
+      <div class="window__body pincer-app"><p class="label">ADVANCED CRUSTACEAN TRAINING</p><h2><span id="pinches">0</span> PINCHES</h2><button class="big-crab" id="big-crab" aria-label="Pinch">🦀</button><p>Click the specimen. For science.</p><div class="pincer-rank">RANK: <b id="rank">SOFT SHELL</b></div></div>
+    </section>
+
+    <section class="window hidden" id="window-trash" data-app="trash" style="--x:42vw;--y:20vh;--w:360px">
+      <header class="window__bar"><span><i class="app-dot"></i> TRASH</span><div><button data-minimize>─</button><button data-close>×</button></div></header>
+      <div class="window__body trash-app"><span>⌫</span><h2>TRASH IS EMPTY</h2><p>Except for one suspicious claw mark.</p><button class="ui-button" id="inspect-trash">INSPECT CLOSER</button></div>
+    </section>
+
+    <section class="window hidden" id="window-settings" data-app="settings" style="--x:38vw;--y:14vh;--w:420px">
+      <header class="window__bar"><span><i class="app-dot"></i> CONTROL PANEL</span><div><button data-minimize>─</button><button data-close>×</button></div></header>
+      <div class="window__body settings-app"><h2>SYSTEM APPEARANCE</h2><div class="setting-block"><b>ACCENT COLOR</b><div class="color-row"><button class="color-swatch selected" data-color="#a6ff58" style="--swatch:#a6ff58"></button><button class="color-swatch" data-color="#56d9ff" style="--swatch:#56d9ff"></button><button class="color-swatch" data-color="#bd83ff" style="--swatch:#bd83ff"></button><button class="color-swatch" data-color="#ff7448" style="--swatch:#ff7448"></button><input id="custom-color" type="color" value="#a6ff58" aria-label="Custom accent color"></div></div><div class="setting-block"><b>CUSTOM WALLPAPER</b><div class="wallpaper-controls"><label class="upload-button" for="wallpaper-input">UPLOAD IMAGE / GIF</label><input id="wallpaper-input" type="file" accept="image/png,image/jpeg,image/webp,image/gif"><button id="clear-wallpaper">RESET</button></div><select id="wallpaper-fit"><option value="cover">FILL SCREEN</option><option value="contain">FIT TO SCREEN</option><option value="center">CENTER</option><option value="repeat">TILE</option></select></div><label>SCANLINES <input id="scan-toggle" type="checkbox" checked><i></i></label><label>SCREEN GLOW <input id="glow-toggle" type="checkbox" checked><i></i></label><label>REDUCE MOTION <input id="motion-toggle" type="checkbox"><i></i></label><label>SKIP BOOT NEXT TIME <input id="boot-toggle" type="checkbox"><i></i></label><p>Preferences are saved locally on this device.</p></div>
+    </section>
+
+    <div class="start-menu hidden" id="start-menu">
+      <header><span>🦀</span><div><b>guest_crab</b><small>LOCAL ACCOUNT</small></div></header>
+      <div class="start-menu__apps"><button data-open="about">▣ Welcome</button><button data-open="files">▰ Files</button><button data-open="terminal">›_ Terminal</button><button data-open="browser">◎ Web</button><button data-open="notes">≡ Notes</button><button data-open="pincer">✦ Pincer.exe</button><button data-open="settings">⚙ Control Panel</button></div>
+      <footer><a href="https://nerdcrab.com">← NERDCRAB LABS</a><button id="shutdown">⏻ SHUT DOWN</button></footer>
+    </div>
+
+    <div class="discovery" id="discovery"><span>🦀</span><div><small>SECRET PROCESS FOUND</small><b id="secret-name">CRAB.DLL</b></div></div>
+
+    <footer class="taskbar">
+      <button class="start-button" id="start-button"><span>🦀</span> START</button>
+      <div class="taskbar__running" id="running-apps"></div>
+      <button class="tray" id="secret-counter" title="Hidden system processes"><span class="online-dot"></span> CRABS <b id="secret-count">0/3</b></button>
+      <button class="clock" id="clock">00:00<br><small>01/01/26</small></button>
+    </footer>
+  </main>
+  <div class="scanlines" id="scanlines" aria-hidden="true"></div><div class="glow" id="glow" aria-hidden="true"></div>
+  <script src="/bootstrap-init.js"></script><script src="crabos.js"></script>
+</body>
+</html>
